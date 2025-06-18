@@ -16,6 +16,15 @@ public class WiseSayingService {
         this.wiseSayingRepository= AppContext.wiseSayingRepository;
     }
 
+    public boolean isAsterisk(String wiseSay) {
+        String regex = ".*[!@#$%^&*()\\-_=+\\[\\]{}|\\\\;:'\",<>/?].*";
+        if (wiseSay.matches(regex)) {
+            System.out.println("특수문자가 포함되었습니다. 다시 입력해주세요.");
+            return true;
+        }
+
+        return false;
+    }
     public WiseSaying write(String content, String author) {
         WiseSaying wiseSaying = new WiseSaying(content, author);
 

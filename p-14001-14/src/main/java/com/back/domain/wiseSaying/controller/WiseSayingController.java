@@ -22,11 +22,17 @@ public class WiseSayingController {
     }
 
     public void actionWrite() {
-        System.out.print("명언 : ");
-        String content = scanner.nextLine();
+        String content, author;
 
-        System.out.print("작가 : ");
-        String author = scanner.nextLine();
+        do {
+            System.out.print("명언 : ");
+            content = scanner.nextLine();
+        } while(wiseSayingService.isAsterisk(content));
+
+        do {
+            System.out.print("작가 : ");
+            author = scanner.nextLine();
+        }while(wiseSayingService.isAsterisk(author));
 
         WiseSaying wiseSaying = wiseSayingService.write(content, author);
 
